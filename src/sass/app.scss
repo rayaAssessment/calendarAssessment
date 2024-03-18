@@ -23,9 +23,7 @@ code {
   margin: 0;
 }
 
-* + * {
-  margin-top: 1rem;
-}
+
 
 h1,
 h2,
@@ -36,9 +34,7 @@ h6 {
   color: #222;
   line-height: 1.1;
 
-  + * {
-    margin-top: 0.5rem;
-  }
+ 
 }
 
 strong {
@@ -100,4 +96,43 @@ li {
       transform: scale(1.1);
     }
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header, .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.header-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 1px solid grey;
+}
+.day-cell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  height: 100px;
+  border: 1px solid grey;
+}
+
+.not-current-month {
+  background-color: #f0f0f0;
+}
+
+.weekend {
+  background-color: #cccccc;
+}
+
+.not-current-month.weekend {
+  background-color: #f0f0f0;
+
 }

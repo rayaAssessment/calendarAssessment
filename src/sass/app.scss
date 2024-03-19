@@ -8,7 +8,7 @@ body {
   font-size: 14px;
   line-height: 1.4;
 
-  > div {
+  >div {
     margin-top: 0;
   }
 }
@@ -34,7 +34,7 @@ h6 {
   color: #222;
   line-height: 1.1;
 
- 
+
 }
 
 strong {
@@ -92,6 +92,7 @@ li {
       outline: none;
       background: $buttonBgLight;
     }
+
     &:hover {
       transform: scale(1.1);
     }
@@ -103,9 +104,20 @@ li {
   flex-direction: column;
 }
 
-.calendar-header, .calendar-grid {
+.calendar {
+  margin: 0 auto;
+  font-weight: 700;
+
+}
+
+.calendar-header,
+.calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-header {
+  color: #FFFFFF;
 }
 
 .header-cell {
@@ -113,19 +125,49 @@ li {
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border: 1px solid grey;
+  border: 1px solid #221D23;
+  width: 125px;
+  background-color: #3772FF;
+
+
 }
+
 .day-cell {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 10px;
-  height: 100px;
-  border: 1px solid grey;
+  height: 125px;
+  width: 125px;
+  border: 1px solid #221D23;
+  cursor: pointer;
+
+  .reminders-list {
+    margin-left: 2px;
+    margin-top: 2px;
+    overflow-y: auto;
+    max-height: 95%;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+
+    .reminder {
+      background-color: #f0f0f0;
+      padding: 2px;
+      margin-bottom: 2px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #3772FF;
+
+    }
+  }
 }
 
 .not-current-month {
-  background-color: #f0f0f0;
+  color: #f0f0f0;
 }
 
 .weekend {
@@ -133,6 +175,129 @@ li {
 }
 
 .not-current-month.weekend {
-  background-color: #f0f0f0;
+  background-color: white;
+}
 
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  button {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    cursor: pointer;
+
+  }
+}
+
+.today {
+  color: #3772FF;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1001;
+  height: fit-content;
+  width: 350px;
+  position: relative;
+  /* This ensures that the close button is positioned relative to the modal */
+
+
+  form {
+
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-evenly;
+
+    textarea {
+      width: 100%;
+      resize: none;
+    }
+
+    label {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  .btn-wrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.5rem;
+    /* Adjust size as needed */
+    color: #221D23;
+  }
+
+  button {
+    border-radius: 10px;
+    background-color: #3772FF;
+    color: #FFFFFF;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+
+  }
+}
+
+.modal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* For Webkit Browsers like Chrome, Safari, and newer versions of Edge */
+.reminders-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reminders-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.reminders-list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.reminders-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
 }

@@ -39,6 +39,32 @@ You should start by rendering a single month view of a calendar for the current 
  - Provide working API keys to any external API you use.
  - We have implemented Redux thunk for state management, but you may use any state manager you are familiar with.
  - Show us your capabilities on CSS and styling, if possible.
+ 
+ # Applicant Message - Running the Application Locally
+
+Due to dependencies on certain legacy features in Node.js, this application may require a specific environment variable to be set when running on newer versions of Node.js. If you encounter any issues related to SSL or cryptographic functions, you may need to enable the OpenSSL legacy provider. (As was the case with me)
+
+To run the application locally with the necessary environment variable:
+
+For macOS/Linux:
+
+`export NODE_OPTIONS=--openssl-legacy-provider`
+
+`yarn start`
+
+For Windows (in Command Prompt):
+
+`set NODE_OPTIONS=--openssl-legacy-provider`
+
+`yarn start`
+
+Or, for PowerShell:
+
+`$env:NODE_OPTIONS="--openssl-legacy-provider"`
+
+`yarn start`
+
+These commands temporarily set the NODE_OPTIONS environment variable to use the OpenSSL legacy provider for the duration of your terminal session, allowing the application to run without modification to the codebase.
 
 # How to deploy
 
